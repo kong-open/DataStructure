@@ -1,0 +1,66 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    //app package
+    ApplicationId = "xyz.kongzz.datastructure"
+
+    //apk info
+    mcVersionName = "1.0.0"     //上一版本名称1.0.0
+    mcVersionCode = 1          //上一版本是1
+
+    // Sdk and tools
+    minSdkVersion = 21
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+
+    // App dependencies
+    supportLibraryVersion = '27.1.1'
+    junitVersion = '4.12'
+    mockitoVersion = '1.10.19'
+    powerMockito = '1.6.2'
+    runnerVersion = '1.0.2'
+    rulesVersion = '0.4.1'
+    espressoVersion = '3.0.2'
+
+    // 配置rxJava+rxAndroid+retrofit2版本
+    rxjava2Version = '2.1.12'
+    rxandroidVersion = '2.0.2'
+    retrofit2Version = '2.4.0'
+    okhttp3Version = '3.10.0'
+    okhttp3_log_interceptorVersion = '3.3.1'
+
+    // 侧滑返回
+    swipebacklayoutVersion = '1.1.0'
+
+    // dragger2依赖注解
+    dragger2Version = '2.16'
+
+    // butterknife 依赖注解
+    butterknifeVersion = '8.8.1'
+}
