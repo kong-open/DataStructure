@@ -55,12 +55,12 @@ ext {
     okhttp3Version = '3.10.0'
     okhttp3_log_interceptorVersion = '3.3.1'
 
-    // 侧滑返回
-    swipebacklayoutVersion = '1.1.0'
-
     // dragger2依赖注解
     dragger2Version = '2.16'
 
     // butterknife 依赖注解
     butterknifeVersion = '8.8.1'
+
+    // 侧滑返回
+    parallaxbacklayoutVersion = '1.1.9'
 }

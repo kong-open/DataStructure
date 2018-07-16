@@ -28,9 +28,6 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$rootProject.ext.runnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
 
-    // 侧滑返回
-    implementation "me.imid.swipebacklayout.lib:library:$rootProject.ext.swipebacklayoutVersion"
-
     // dragger2依赖注解
 //    implementation "com.google.dagger:dagger-android:$rootProject.ext.dragger2Version"
 //    implementation "com.google.dagger:dagger-android-support:$rootProject.ext.dragger2Version"
@@ -39,6 +36,9 @@ dependencies {
     // butterknife
     implementation "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+
+    // 侧滑返回
+    implementation "com.github.anzewei:parallaxbacklayout:$rootProject.ext.parallaxbacklayoutVersion"
 
 
 }

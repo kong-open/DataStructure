@@ -6,13 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import xyz.kongzz.datastructure.base.widget.convention.PlaceHolderView;
 
 /**
@@ -23,7 +20,6 @@ import xyz.kongzz.datastructure.base.widget.convention.PlaceHolderView;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    public SwipeBackLayout mSwipeBackLayout;
     protected PlaceHolderView mPlaceHolderView;
     protected Activity mContext;
 
@@ -129,33 +125,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.mPlaceHolderView = placeHolderView;
     }
 
-    @Override
-    public void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mSwipeBackLayout.attachToActivity(this);
-    }
-
-    @Override
-    public View findViewById(int id) {
-        View view = super.findViewById(id);
-        if (view == null && mSwipeBackLayout != null) {
-            return mSwipeBackLayout.findViewById(id);
-        }
-        return view;
-
-    }
-
-    private void onActivityCreate() {
-        mSwipeBackLayout = new SwipeBackLayout(mContext);
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        mSwipeBackLayout.setLayoutParams(params);
-    }
-
-    public SwipeBackLayout getSwipeBackLayout() {
-        return mSwipeBackLayout;
-    }
-
-    public void setSwipeBackEnable(boolean enable) {
-        mSwipeBackLayout.setEnableGesture(enable);
-    }
 }
