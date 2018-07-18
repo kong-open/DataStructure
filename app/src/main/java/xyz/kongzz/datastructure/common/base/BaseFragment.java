@@ -1,4 +1,4 @@
-package xyz.kongzz.datastructure.base;
+package xyz.kongzz.datastructure.common.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import xyz.kongzz.datastructure.base.widget.convention.PlaceHolderView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import xyz.kongzz.datastructure.common.base.widget.convention.PlaceHolderView;
 
 /**
  * 作者:Kong

@@ -63,4 +63,5 @@ ext {
 
     // 侧滑返回
     parallaxbacklayoutVersion = '1.1.9'
+    geniusVersion = '2.1.0'
 }

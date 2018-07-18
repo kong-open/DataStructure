@@ -1,4 +1,4 @@
-package xyz.kongzz.datastructure.base;
+package xyz.kongzz.datastructure.common.base;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import xyz.kongzz.datastructure.base.widget.convention.PlaceHolderView;
+import xyz.kongzz.datastructure.common.base.widget.convention.PlaceHolderView;
 
 /**
  * 作者:Kong
@@ -103,9 +103,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (fragments != null && fragments.size() > 0) {
             for (Fragment fragment : fragments) {
                 // 判断是否为我们能够处理的Fragment类型
-                if (fragment instanceof xyz.kongzz.datastructure.base.BaseFragment) {
+                if (fragment instanceof xyz.kongzz.datastructure.common.base.BaseFragment) {
                     // 判断是否拦截了返回按钮
-                    if (((xyz.kongzz.datastructure.base.BaseFragment) fragment).onBackPressed()) {
+                    if (((xyz.kongzz.datastructure.common.base.BaseFragment) fragment).onBackPressed()) {
                         // 如果有直接Return
                         return;
                     }

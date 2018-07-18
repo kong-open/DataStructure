@@ -1,4 +1,4 @@
-package xyz.kongzz.datastructure.base.widget.convention;
+package xyz.kongzz.datastructure.common.base.widget.convention;
 
 import android.support.annotation.StringRes;
 
