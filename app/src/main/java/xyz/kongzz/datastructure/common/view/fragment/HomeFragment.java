@@ -1,7 +1,13 @@
 package xyz.kongzz.datastructure.common.view.fragment;
 
+import android.content.Intent;
+import android.widget.Button;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import xyz.kongzz.datastructure.R;
 import xyz.kongzz.datastructure.common.base.PresenterFragment;
+import xyz.kongzz.datastructure.common.view.activity.sort.QuickSortActivity;
 import xyz.kongzz.datastructure.factory.presenter.home.HomeContract;
 
 /**
@@ -13,6 +19,9 @@ import xyz.kongzz.datastructure.factory.presenter.home.HomeContract;
 public class HomeFragment extends PresenterFragment<HomeContract.Presenter>
         implements HomeContract.View {
 
+    @BindView(R.id.bt_sort)
+    Button mBtSort;
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.fragment_home;
@@ -23,5 +32,9 @@ public class HomeFragment extends PresenterFragment<HomeContract.Presenter>
         return null;
     }
 
-
+    @OnClick(R.id.bt_sort)
+    public void onBtSortClicked() {
+        Intent intent = new Intent(getActivity(), QuickSortActivity.class);
+        startActivity(intent);
+    }
 }

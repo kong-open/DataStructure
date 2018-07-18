@@ -6,8 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxBack;
-
 import butterknife.BindView;
 import xyz.kongzz.datastructure.R;
 import xyz.kongzz.datastructure.common.base.BaseActivity;
@@ -17,7 +15,6 @@ import xyz.kongzz.datastructure.common.view.fragment.MineFragment;
 import xyz.kongzz.datastructure.common.view.helper.BottomNavigationViewHelper;
 import xyz.kongzz.datastructure.common.view.helper.NavHelper;
 
-@ParallaxBack(edge = ParallaxBack.Edge.RIGHT, layout = ParallaxBack.Layout.PARALLAX)
 public class MainActivity extends BaseActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
         NavHelper.OnTabChangedListener<Integer> {
