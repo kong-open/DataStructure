@@ -42,5 +42,7 @@ dependencies {
 
     implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
 
-    implementation 'com.google.code.gson:gson:2.8.4'
+    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+
+    implementation 'com.ifadai:particlesmasher:1.0.1'
 }

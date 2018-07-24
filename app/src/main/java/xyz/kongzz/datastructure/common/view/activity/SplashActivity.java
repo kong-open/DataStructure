@@ -1,5 +1,12 @@
 package xyz.kongzz.datastructure.common.view.activity;
 
+import android.content.Intent;
+import android.widget.ImageView;
+
+import com.fadai.particlesmasher.ParticleSmasher;
+import com.fadai.particlesmasher.SmashAnimator;
+
+import butterknife.BindView;
 import xyz.kongzz.datastructure.R;
 import xyz.kongzz.datastructure.common.base.BaseActivity;
 
@@ -10,8 +17,39 @@ import xyz.kongzz.datastructure.common.base.BaseActivity;
  */
 
 public class SplashActivity extends BaseActivity {
+
+    @BindView(R.id.iv_splash)
+    ImageView ivSplash;
+
+    private ParticleSmasher mSmasher;
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_splash;
+    }
+
+    @Override
+    protected void initWidget() {
+        super.initWidget();
+        mSmasher= new ParticleSmasher(this);
+        ivSplash.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSmasher.with(ivSplash)
+                        .setStyle(SmashAnimator.STYLE_EXPLOSION)
+                        .setDuration(2000)
+                        .setHorizontalMultiple(2)
+                        .setVerticalMultiple(2)
+                        .addAnimatorListener(new SmashAnimator.OnAnimatorListener() {
+                            @Override
+                            public void onAnimatorEnd() {
+                                super.onAnimatorEnd();
+                                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                                finish();
+                            }
+                        })
+                        .start();
+            }
+        },1000);
     }
 }
