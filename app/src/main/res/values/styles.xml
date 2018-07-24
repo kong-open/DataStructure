@@ -23,6 +23,13 @@
         <item name="android:windowIsTranslucent">false</item>
     </style>
 
+    <!--启动页-->
+    <style name="AppWelcome" parent="AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+    </style>
+
     <!-- animation 样式 -->
     <style name="activityAnimation" parent="@android:style/Animation">
         <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
