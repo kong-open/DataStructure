@@ -31,15 +31,15 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initWidget() {
         super.initWidget();
-        mSmasher= new ParticleSmasher(this);
+        mSmasher = new ParticleSmasher(this);
         ivSplash.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mSmasher.with(ivSplash)
                         .setStyle(SmashAnimator.STYLE_EXPLOSION)
                         .setDuration(2000)
-                        .setHorizontalMultiple(2)
-                        .setVerticalMultiple(2)
+                        .setHorizontalMultiple(3)
+                        .setVerticalMultiple(4)
                         .addAnimatorListener(new SmashAnimator.OnAnimatorListener() {
                             @Override
                             public void onAnimatorEnd() {
@@ -50,6 +50,6 @@ public class SplashActivity extends BaseActivity {
                         })
                         .start();
             }
-        },1000);
+        }, 1000);
     }
 }
