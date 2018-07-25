@@ -2,6 +2,7 @@ package xyz.kongzz.datastructure.common.view.activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -9,22 +10,19 @@ import android.widget.TextView;
 import butterknife.BindView;
 import xyz.kongzz.datastructure.R;
 import xyz.kongzz.datastructure.common.base.BaseActivity;
-import xyz.kongzz.datastructure.common.view.fragment.DiscoverFragment;
-import xyz.kongzz.datastructure.common.view.fragment.HomeFragment;
-import xyz.kongzz.datastructure.common.view.fragment.MineFragment;
+import xyz.kongzz.datastructure.common.view.adapter.ViewPagerAdapter;
 import xyz.kongzz.datastructure.common.view.helper.BottomNavigationViewHelper;
-import xyz.kongzz.datastructure.common.view.helper.NavHelper;
 
 public class MainActivity extends BaseActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
-        NavHelper.OnTabChangedListener<Integer> {
+        ViewPager.OnPageChangeListener {
 
     @BindView(R.id.navigation)
     BottomNavigationView mNavigation;
     @BindView(R.id.tv_title)
     TextView mTitle;
-
-    private NavHelper<Integer> mNavHelper;
+    @BindView(R.id.vp_content)
+    ViewPager mVpContent;
 
     @Override
     protected int getContentLayoutId() {
@@ -43,27 +41,66 @@ public class MainActivity extends BaseActivity
     @Override
     protected void initWidget() {
         super.initWidget();
-        // 初始化底部辅助工具类
-        mNavHelper = new NavHelper<>(this, R.id.lay_container,
-                getSupportFragmentManager(), this);
-        mNavHelper.add(R.id.navigation_home, new NavHelper.Tab<>(HomeFragment.class, R.string.title_home))
-                .add(R.id.navigation_discover, new NavHelper.Tab<>(DiscoverFragment.class, R.string.title_discover))
-                .add(R.id.navigation_mine, new NavHelper.Tab<>(MineFragment.class, R.string.title_mine));
-
         BottomNavigationViewHelper.disableShiftMode(mNavigation);
         // 添加对底部按钮点击的监听
         mNavigation.setOnNavigationItemSelectedListener(this);
+
+        mVpContent.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        mVpContent.addOnPageChangeListener(this);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // 转接事件流到工具类中
-        return mNavHelper.performClickMenu(item.getItemId());
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                return setCurrentTab(0);
+            case R.id.navigation_discover:
+                return setCurrentTab(1);
+            case R.id.navigation_mine:
+                return setCurrentTab(2);
+        }
+        return false;
     }
 
     @Override
-    public void onTabChanged(NavHelper.Tab<Integer> newTab, NavHelper.Tab<Integer> oldTab) {
-        // 从额外字段中取出我们的Title资源Id
-        mTitle.setText(newTab.extra);
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        switch (position) {
+            case 0:
+                mNavigation.setSelectedItemId(R.id.navigation_home);
+                break;
+            case 1:
+                mNavigation.setSelectedItemId(R.id.navigation_discover);
+                break;
+            case 2:
+                mNavigation.setSelectedItemId(R.id.navigation_mine);
+                break;
+
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    private boolean setCurrentTab(int postion) {
+        mVpContent.setCurrentItem(postion);
+        switch (postion) {
+            case 0:
+                mTitle.setText(R.string.title_home);
+                return true;
+            case 1:
+                mTitle.setText(R.string.title_discover);
+                return true;
+            case 2:
+                mTitle.setText(R.string.title_mine);
+                return true;
+        }
+        return false;
     }
 }

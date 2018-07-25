@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,11 +7,27 @@
     android:layout_height="match_parent"
     tools:context="xyz.kongzz.datastructure.common.view.activity.sort.QuickSortActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="@dimen/statusBarSize"
+        android:background="@color/trans"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
         android:id="@+id/tv_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="排序以前"/>
 
     <TextView
@@ -21,16 +37,24 @@
         android:layout_below="@+id/tv_start"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_start"
+        app:layout_goneMarginTop="@dimen/dp_20"
         tools:text="排序结果"/>
 
     <Button
         android:id="@+id/bt_do_sort"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_50"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@null"
+        android:text="排序"
         android:textColor="@color/blackColor"
-        android:textSize="@dimen/sp_12"
-        tools:text="排序"/>
-</RelativeLayout>
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>
