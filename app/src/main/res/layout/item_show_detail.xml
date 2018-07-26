@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_25"
+    android:layout_height="@dimen/dp_100"
+    android:paddingStart="@dimen/dp_2"
+    android:paddingEnd="@dimen/dp_2">
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bc_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</android.support.constraint.ConstraintLayout>

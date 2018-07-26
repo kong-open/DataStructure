@@ -1,8 +1,10 @@
 package xyz.kongzz.datastructure.common.view.activity.sort;
 
+import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.github.anzewei.parallaxbacklayout.ParallaxBack;
 
 import butterknife.BindView;
@@ -28,7 +30,10 @@ public class QuickSortActivity extends PresenterToolbarActivity<QuickSortContrac
     TextView tvEnd;
     @BindView(R.id.bt_do_sort)
     Button btDoSort;
+    @BindView(R.id.rv_show_detail)
+    RecyclerView rvShowDetail;
 
+    private BaseQuickAdapter mAdapter;
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_quick_sort;
@@ -38,6 +43,7 @@ public class QuickSortActivity extends PresenterToolbarActivity<QuickSortContrac
     protected void initWidget() {
         super.initWidget();
         setTitle("快速排序");
+        rvShowDetail.setAdapter(mAdapter);
     }
 
     @Override

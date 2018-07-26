@@ -40,9 +40,18 @@ dependencies {
     // 侧滑返回
     implementation "com.github.anzewei:parallaxbacklayout:$rootProject.ext.parallaxbacklayoutVersion"
 
+    // genius
     implementation "net.qiujuer.genius:kit-handler:$rootProject.ext.geniusVersion"
 
+    // GSON
     implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
 
-    implementation 'com.ifadai:particlesmasher:1.0.1'
+    // 粒子破碎动画
+    implementation "com.ifadai:particlesmasher:$rootProject.ext.particlesmasherVersion"
+
+    // 图表框架
+    implementation "com.github.PhilJay:MPAndroidChart:$rootProject.ext.mPAndroidChartVersion"
+
+    // adapter
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.ext.adapterHelperVersion"
 }
