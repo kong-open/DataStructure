@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 
 import xyz.kongzz.datastructure.R;
 import xyz.kongzz.datastructure.factory.presenter.BaseContract;
+import xyz.kongzz.datastructure.utils.ToastUtils;
 
 /**
  * 作者:Kong
@@ -47,7 +48,7 @@ public abstract class PresenterToolbarActivity<Presenter extends BaseContract.Pr
         if (mPlaceHolderView != null) {
             mPlaceHolderView.triggerError(str);
         } else {
-            DSApplication.showToast(str);
+            ToastUtils.showToast(str);
         }
     }
 

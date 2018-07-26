@@ -3,6 +3,7 @@ package xyz.kongzz.datastructure.common.base;
 import android.content.Context;
 
 import xyz.kongzz.datastructure.factory.presenter.BaseContract;
+import xyz.kongzz.datastructure.utils.ToastUtils;
 
 /**
  * 作者:Kong
@@ -36,7 +37,7 @@ public abstract class PresenterFragment<Presenter extends BaseContract.Presenter
             mPlaceHolderView.triggerError(str);
         } else {
             // 显示错误
-            DSApplication.showToast(str);
+            ToastUtils.showToast(str);
         }
     }
 

@@ -49,9 +49,6 @@ dependencies {
     // 粒子破碎动画
     implementation "com.ifadai:particlesmasher:$rootProject.ext.particlesmasherVersion"
 
-    // 图表框架
-    implementation "com.github.PhilJay:MPAndroidChart:$rootProject.ext.mPAndroidChartVersion"
-
     // adapter
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.ext.adapterHelperVersion"
 }
