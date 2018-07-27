@@ -71,6 +71,9 @@ ext {
     // 粒子破碎动画
     particlesmasherVersion = '1.0.1'
 
+    // 图表框架
+    MPAndroidChartVersion = 'v3.0.3'
+
     // RecycleAdapter
     adapterHelperVersion = '2.9.40'
 }

@@ -8,7 +8,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
 
 import xyz.kongzz.datastructure.R;
-import xyz.kongzz.datastructure.factory.model.SourceDataBean;
 
 /**
  * 作者:Kong
@@ -16,14 +15,14 @@ import xyz.kongzz.datastructure.factory.model.SourceDataBean;
  * 描述:这是 RecycleViewAdapter
  */
 
-public class RecycleViewAdapter extends BaseQuickAdapter<SourceDataBean, BaseViewHolder> {
+public class RecycleViewAdapter extends BaseQuickAdapter<Integer, BaseViewHolder> {
 
-    public RecycleViewAdapter(int layoutResId, @Nullable List<SourceDataBean> data) {
+    public RecycleViewAdapter(@Nullable List<Integer> data) {
         super(R.layout.item_show_detail, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, SourceDataBean item) {
-        // TODO
+    protected void convert(BaseViewHolder helper, Integer item) {
+        helper.setText(R.id.tv_number,String.valueOf(item.intValue()));
     }
 }
