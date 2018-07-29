@@ -52,6 +52,6 @@ dependencies {
     // adapter
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.ext.adapterHelperVersion"
 
-    // 图标框架
+    // 图表框架
     implementation "com.github.PhilJay:MPAndroidChart:$rootProject.ext.MPAndroidChartVersion"
 }

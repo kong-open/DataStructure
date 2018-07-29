@@ -1,20 +1,21 @@
 package xyz.kongzz.datastructure.common.view.activity.sort;
 
-import android.graphics.Color;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.anzewei.parallaxbacklayout.ParallaxBack;
-import com.github.mikephil.charting.charts.BarChart;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import xyz.kongzz.datastructure.R;
 import xyz.kongzz.datastructure.common.base.PresenterToolbarActivity;
-import xyz.kongzz.datastructure.common.view.helper.BarChartManager;
+import xyz.kongzz.datastructure.common.view.adapter.RecycleViewAdapter;
 import xyz.kongzz.datastructure.factory.presenter.sort.QuickSortContract;
 import xyz.kongzz.datastructure.factory.presenter.sort.QuickSortContract.Presenter;
 import xyz.kongzz.datastructure.factory.presenter.sort.QuickSortPresenter;
@@ -27,7 +28,7 @@ import xyz.kongzz.datastructure.utils.GsonUtil;
 public class QuickSortActivity extends PresenterToolbarActivity<QuickSortContract.Presenter>
         implements QuickSortContract.View {
 
-    int sourceData[] = {23, 12, 13, 44, 65, 26, 17, 38, 59};
+    Integer sourceData[] = {23, 12, 13, 49, 44, 26, 17, 38};
 
     @BindView(R.id.tv_start)
     TextView tvStart;
@@ -35,10 +36,12 @@ public class QuickSortActivity extends PresenterToolbarActivity<QuickSortContrac
     TextView tvEnd;
     @BindView(R.id.bt_do_sort)
     Button btDoSort;
-    @BindView(R.id.bc_play)
-    BarChart mBarChart;
+    @BindView(R.id.rv_play)
+    RecyclerView mRvPlay;
 
-    BarChartManager mManager;
+    ArrayList<Integer> mLists;
+
+    RecycleViewAdapter mAdapter;
 
     @Override
     protected int getContentLayoutId() {
@@ -46,70 +49,21 @@ public class QuickSortActivity extends PresenterToolbarActivity<QuickSortContrac
     }
 
     @Override
+    protected Presenter initPresenter() {
+        return new QuickSortPresenter(this);
+    }
+
+    @Override
     protected void initWidget() {
         super.initWidget();
         setTitle("快速排序");
+        mLists = new ArrayList<>(Arrays.asList(sourceData));
 
-        //设置是否绘制chart边框的线
-        mBarChart.setDrawBarShadow(false);
-        //设置chart是否可以触摸
-        mBarChart.setTouchEnabled(false);
-        //设置是否可以拖拽
-        mBarChart.setDragEnabled(false);
-        //设置是否可以通过双击屏幕放大图表。默认是true
-        mBarChart.setDoubleTapToZoomEnabled(false);
-        //是否启用网格背景
-        mBarChart.setDrawGridBackground(false);
-        mBarChart.setHighlightPerDragEnabled(true);
-        // no description text
-        mBarChart.getDescription().setEnabled(false);
-        //隐藏左边坐标轴横网格线
-        mBarChart.getAxisLeft().setDrawGridLines(false);
-        //隐藏右边坐标轴横网格线
-        mBarChart.getAxisRight().setDrawGridLines(false);
-        //隐藏X轴竖网格线
-        mBarChart.getXAxis().setDrawGridLines(false);
-        // 隐藏坐标轴
-        mBarChart.getAxisRight().setEnabled(false);
-        mBarChart.getAxisLeft().setEnabled(false);
-        //取消legend
-        mBarChart.getLegend().setEnabled(false);
-        mBarChart.getXAxis().setEnabled(false);
-
-        mManager = new BarChartManager(mBarChart);
-
-        //设置x轴的数据
-        ArrayList<Float> xValues = new ArrayList<>();
-        for (int i = 0; i <= 10; i++) {
-            xValues.add((float) i);
-        }
-
-        //设置y轴的数据()
-        List<List<Float>> yValues = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            List<Float> yValue = new ArrayList<>();
-            for (int j = 0; j <= 10; j++) {
-                yValue.add((float) (Math.random() * 80));
-            }
-            yValues.add(yValue);
-        }
-
-        //颜色集合
-        List<Integer> colours = new ArrayList<>();
-        colours.add(Color.GREEN);
-        colours.add(Color.BLUE);
-        colours.add(Color.RED);
-        colours.add(Color.CYAN);
-
-        //线的名字集合
-        List<String> names = new ArrayList<>();
-        names.add("折线一");
-        names.add("折线二");
-        names.add("折线三");
-        names.add("折线四");
-
-        //创建多条折线的图表
-        mManager.showBarChart(xValues, yValues.get(0), names.get(1), colours.get(3));
+        mAdapter = new RecycleViewAdapter(mLists);
+        LinearLayoutManager mManager = new LinearLayoutManager(this);
+        mManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mRvPlay.setLayoutManager(mManager);
+        mRvPlay.setAdapter(mAdapter);
     }
 
     @Override
@@ -119,17 +73,19 @@ public class QuickSortActivity extends PresenterToolbarActivity<QuickSortContrac
     }
 
     @OnClick(R.id.bt_do_sort)
-    public void onViewClicked() {
+    public void onBtDoSortClicked() {
+        // 进行快速排序
         mPresenter.startQuickSort(sourceData);
     }
 
     @Override
-    public void onQuickSortDone(int[] sourceData) {
-        tvEnd.setText("快速排序之后： " + GsonUtil.GsonString(sourceData));
+    public void onStepQuickSort(int fromPosition, int toPosition) {
+        Log.e("onStepQuickSort","fromPosition: " + fromPosition + ", toPosition: " + toPosition);
+        mAdapter.notifyItemMoved(fromPosition, toPosition);
     }
 
     @Override
-    protected Presenter initPresenter() {
-        return new QuickSortPresenter(this);
+    public void onQuickSortDone(Integer[] sourceData) {
+        tvEnd.setText("快速排序之后： " + GsonUtil.GsonString(sourceData));
     }
 }

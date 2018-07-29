@@ -2,7 +2,6 @@ package xyz.kongzz.datastructure.common.view.helper;
 
 import android.graphics.Color;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -47,12 +46,37 @@ public class BarChartManager {
         //背景阴影
         mBarChart.setDrawBarShadow(false);
         mBarChart.setHighlightFullBarEnabled(false);
-
         //显示边界
-        mBarChart.setDrawBorders(true);
+        mBarChart.setDrawBorders(false);
+        //设置是否绘制chart边框的线
+        mBarChart.setDrawBarShadow(false);
+        //设置chart是否可以触摸
+        mBarChart.setTouchEnabled(false);
+        //设置是否可以拖拽
+        mBarChart.setDragEnabled(false);
+        //设置是否可以通过双击屏幕放大图表。默认是true
+        mBarChart.setDoubleTapToZoomEnabled(false);
+        //是否启用网格背景
+        mBarChart.setDrawGridBackground(false);
+        mBarChart.setHighlightPerDragEnabled(true);
+        // no description text
+        mBarChart.getDescription().setEnabled(false);
+        //隐藏左边坐标轴横网格线
+        mBarChart.getAxisLeft().setDrawGridLines(false);
+        //隐藏右边坐标轴横网格线
+        mBarChart.getAxisRight().setDrawGridLines(false);
+        //隐藏X轴竖网格线
+        mBarChart.getXAxis().setDrawGridLines(false);
+        // 隐藏坐标轴
+        mBarChart.getAxisRight().setEnabled(false);
+        mBarChart.getAxisLeft().setEnabled(false);
+        //取消legend
+        mBarChart.getLegend().setEnabled(false);
+        mBarChart.getXAxis().setEnabled(false);
+
         //设置动画效果
-        mBarChart.animateY(1000, Easing.EasingOption.Linear);
-        mBarChart.animateX(1000, Easing.EasingOption.Linear);
+//        mBarChart.animateY(1000, Easing.EasingOption.Linear);
+//        mBarChart.animateX(1000, Easing.EasingOption.Linear);
 
         //折线图例 标签 设置
         Legend legend = mBarChart.getLegend();
@@ -81,7 +105,7 @@ public class BarChartManager {
      * @param label
      * @param color
      */
-    public void showBarChart(List<Float> xAxisValues, List<Float> yAxisValues, String label, int color) {
+    public void showBarChart(List<Integer> xAxisValues, List<Integer> yAxisValues, String label, int color) {
         initLineChart();
         ArrayList<BarEntry> entries = new ArrayList<>();
         for (int i = 0; i < xAxisValues.size(); i++) {
@@ -89,7 +113,8 @@ public class BarChartManager {
         }
         // 每一个BarDataSet代表一类柱状图
         BarDataSet barDataSet = new BarDataSet(entries, label);
-
+        // 设置自定义的数据显示
+        barDataSet.setValueFormatter(new CustomerValueFormatter());
         barDataSet.setColor(color);
         barDataSet.setValueTextSize(9f);
         barDataSet.setFormLineWidth(1f);
@@ -98,6 +123,7 @@ public class BarChartManager {
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
         dataSets.add(barDataSet);
         BarData data = new BarData(dataSets);
+
         //设置X轴的刻度数
         xAxis.setLabelCount(xAxisValues.size() - 1, false);
         mBarChart.setData(data);
@@ -117,7 +143,6 @@ public class BarChartManager {
         for (int i = 0; i < yAxisValues.size(); i++) {
             ArrayList<BarEntry> entries = new ArrayList<>();
             for (int j = 0; j < yAxisValues.get(i).size(); j++) {
-
                 entries.add(new BarEntry(xAxisValues.get(j), yAxisValues.get(i).get(j)));
             }
             BarDataSet barDataSet = new BarDataSet(entries, labels.get(i));
@@ -137,8 +162,6 @@ public class BarChartManager {
         // (0.2 + 0.02) * 4 + 0.08 = 1.00 -> interval per "group"
         xAxis.setLabelCount(xAxisValues.size() - 1, false);
         data.setBarWidth(barWidth);
-
-
         data.groupBars(0, groupSpace, barSpace);
         mBarChart.setData(data);
     }

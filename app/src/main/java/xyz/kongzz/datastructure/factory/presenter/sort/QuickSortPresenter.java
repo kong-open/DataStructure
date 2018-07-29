@@ -11,78 +11,66 @@ import xyz.kongzz.datastructure.factory.presenter.BasePresenter;
 public class QuickSortPresenter extends BasePresenter<QuickSortContract.View>
         implements QuickSortContract.Presenter {
 
+    private QuickSortContract.View mView;
+
+    private int total = 0;
+
     public QuickSortPresenter(QuickSortContract.View view) {
         super(view);
+        mView = getView();
     }
-
-    /**
-     * 记录一个23，让出自己位置，将小得放进来
-     * <p>
-     * 23, 12, 13, 44, 65, 26, 17, 38, 59
-     * <p>
-     * 17, 12, 13, 44, 65, 26, 17, 38, 59
-     * <p>
-     * 17, 12, 13, 44, 65, 26, 44, 38, 59
-     * <p>
-     * 一趟以后得 17, 12, 13, 23, 65, 26, 44, 38, 59
-     * <p>
-     * 一趟=[17, 12, 13, 44, 65, 26, 44, 38, 59]
-     * I/info    (27284): 一趟=[17, 12, 13, 44, 65, 26, 44, 38, 59]
-     * I/info    (27284): 一趟=[13, 12, 13, 23, 65, 26, 44, 38, 59]
-     * I/info    (27284): 一趟=[12, 12, 17, 23, 65, 26, 44, 38, 59]
-     * I/info    (27284): 一趟=[12, 13, 17, 23, 59, 26, 44, 38, 59]
-     * I/info    (27284): 一趟=[12, 13, 17, 23, 38, 26, 44, 38, 65]
-     * I/info    (27284): 一趟=[12, 13, 17, 23, 26, 26, 44, 59, 65]
-     */
-
 
     @Override
-    public void startQuickSort(int[] sourceData) {
-        sort(sourceData, 0, sourceData.length - 1);
-        final QuickSortContract.View view = getView();
-        view.onQuickSortDone(sourceData);
+    public void startQuickSort(Integer[] sourceData) {
+        quickSort(sourceData, 0, sourceData.length - 1);
+        mView.onQuickSortDone(sourceData);
     }
+
 
     /**
      * 一次比较（以中间元素为间隔，小的在左边，大的在右边）
      */
-    public static int partition(int a[], int low, int high) {
-        int privotKey = a[low];// 比较元素，选择区间最小标号那个
-        while (low < high) {
-            // 1. 先从最右边开始比较
-            while (low < high && a[high] >= privotKey) {
-                high--;
-            }
-
-            // 换位置
-            int _temp;
-            _temp = a[low];
-            a[low] = a[high];
-            a[high] = _temp;
-
-            // 2. 然后再从左边开始比较
-            while (low < high && a[low] <= privotKey) {
-                low++;
-            }
-
-            // 换位置
-            _temp = a[low];
-            a[low] = a[high];
-            a[high] = _temp;
+    private void quickSort(Integer[] a, int low, int high) {
+        //1,找到递归算法的出口
+        if (low > high) {
+            return;
         }
-        // 返回中间分隔线元素
-        return low;
-    }
+        total++;
+        //2, 存
+        int i = low;
+        int j = high;
+        //3,key
+        int key = a[low];
 
-
-    public static void sort(int[] sourceData, int low, int high) {
-        if (low < high) {
-            // 一次排序，得到中间分隔点
-            int middle = partition(sourceData, low, high);
-            // 左侧较小元素集排序
-            sort(sourceData, low, middle - 1);
-            // 右侧较大元素集排序
-            sort(sourceData, middle + 1, high);
+        //4，完成一趟排序
+        while (i < j) {
+            //4.1 ，从右往左找到第一个小于key的数
+            while (i < j && a[j] > key) {
+                j--;
+            }
+            // 4.2 从左往右找到第一个大于key的数
+            while (i < j && a[i] <= key) {
+                i++;
+            }
+            //4.3 交换
+            if (i < j) {
+                int p = a[i];
+                a[i] = a[j];
+                a[j] = p;
+            }
         }
+
+        // 4.4，调整key的位置
+        int p = a[i];
+        a[i] = a[low];
+        a[low] = p;
+
+        mView.onStepQuickSort(low, i);
+
+        //5, 对key左边的数快排
+        quickSort(a, low, i - 1);
+
+        //6, 对key右边的数快排
+        quickSort(a, i + 1, high);
     }
 }

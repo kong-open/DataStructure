@@ -10,10 +10,11 @@ import xyz.kongzz.datastructure.factory.presenter.BaseContract;
 
 public interface QuickSortContract {
     interface Presenter extends BaseContract.Presenter {
-        void startQuickSort(int[] sourceData);
+        void startQuickSort(Integer[] sourceData);
     }
 
     interface View extends BaseContract.View<Presenter> {
-        void onQuickSortDone(int[] sourceData);
+        void onStepQuickSort(int fromPosition, int toPosition);
+        void onQuickSortDone(Integer[] sourceData);
     }
 }
