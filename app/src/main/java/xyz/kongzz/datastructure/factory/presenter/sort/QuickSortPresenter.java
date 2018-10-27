@@ -11,6 +11,8 @@ import xyz.kongzz.datastructure.factory.presenter.BasePresenter;
 public class QuickSortPresenter extends BasePresenter<QuickSortContract.View>
         implements QuickSortContract.Presenter {
 
+    // TODO 快速排序时，设置延时，方便动画展示
+
     private QuickSortContract.View mView;
 
     private int total = 0;
