@@ -100,7 +100,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         @SuppressLint("RestrictedApi")
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
         // 判断是否为空
-        if (fragments != null && fragments.size() > 0) {
+        if (fragments.size() > 0) {
             for (Fragment fragment : fragments) {
                 // 判断是否为我们能够处理的Fragment类型
                 if (fragment instanceof xyz.kongzz.datastructure.common.base.BaseFragment) {
