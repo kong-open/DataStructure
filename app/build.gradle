@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -8,7 +9,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.mcVersionCode
         versionName rootProject.ext.mcVersionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -16,17 +17,36 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    //AndroidX
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintlayout"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerview"
+    implementation "com.google.android.material:material:$rootProject.ext.material"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.legacy_support_v4"
+    implementation "androidx.annotation:annotation:$rootProject.ext.annotation"
+
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
-    androidTestImplementation "com.android.support.test:runner:$rootProject.ext.runnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.ext.runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espresso_core"
+
+
+//    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+//    implementation "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+//    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+//    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+//    androidTestImplementation "com.android.support.test:runner:$rootProject.ext.runnerVersion"
+//    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
 
     // dragger2依赖注解
 //    implementation "com.google.dagger:dagger-android:$rootProject.ext.dragger2Version"

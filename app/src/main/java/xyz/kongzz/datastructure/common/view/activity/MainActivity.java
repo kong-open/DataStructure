@@ -1,11 +1,13 @@
 package xyz.kongzz.datastructure.common.view.activity;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
 import xyz.kongzz.datastructure.R;
