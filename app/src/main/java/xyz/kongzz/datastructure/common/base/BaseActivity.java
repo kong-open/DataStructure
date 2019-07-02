@@ -45,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化控件之前调用
      */
-    protected void initBefore(){
+    protected void initBefore() {
 
     }
 
@@ -87,7 +87,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onSupportNavigateUp() {
         // 当点击界面导航返回时，Finish当前界面
@@ -120,9 +119,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 设置占位布局
+     *
      * @param placeHolderView 继承了占位布局的VIew
-     * */
-    public void setPlaceHolderView(PlaceHolderView placeHolderView){
+     */
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
         this.mPlaceHolderView = placeHolderView;
     }
 
