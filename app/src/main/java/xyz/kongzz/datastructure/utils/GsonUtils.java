@@ -12,10 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @className: GsonUtil
+ * @author Kong
+ * @className: GsonUtils
  * @description: Gson解析相关工具类
  */
-public class GsonUtil {
+public class GsonUtils {
     // Gson实体
     private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss:SSS").create();
 
@@ -25,7 +26,7 @@ public class GsonUtil {
         }
     }
 
-    private GsonUtil() {
+    private GsonUtils() {
     }
 
     /**

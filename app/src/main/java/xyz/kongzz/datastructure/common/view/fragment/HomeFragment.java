@@ -7,8 +7,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import xyz.kongzz.datastructure.R;
 import xyz.kongzz.datastructure.common.base.PresenterFragment;
+import xyz.kongzz.datastructure.common.view.activity.sort.BubbleSortActivity;
 import xyz.kongzz.datastructure.common.view.activity.sort.QuickSortActivity;
 import xyz.kongzz.datastructure.factory.presenter.home.HomeContract;
+import xyz.kongzz.datastructure.factory.presenter.sort.BubbleSortContract;
 
 /**
  * 作者:Kong
@@ -34,7 +36,7 @@ public class HomeFragment extends PresenterFragment<HomeContract.Presenter>
 
     @OnClick(R.id.bt_sort)
     public void onBtSortClicked() {
-        Intent intent = new Intent(getActivity(), QuickSortActivity.class);
+        Intent intent = new Intent(getActivity(), BubbleSortActivity.class);
         startActivity(intent);
     }
 }
