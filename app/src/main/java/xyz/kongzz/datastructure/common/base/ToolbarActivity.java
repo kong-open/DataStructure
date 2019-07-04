@@ -1,7 +1,8 @@
 package xyz.kongzz.datastructure.common.base;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 
 import xyz.kongzz.datastructure.R;
 
@@ -17,12 +18,13 @@ public abstract class ToolbarActivity extends BaseActivity {
     @Override
     protected void initWidget() {
         super.initWidget();
-        initToolbar((Toolbar) findViewById(R.id.toolbar));
+        initToolbar(findViewById(R.id.toolbar));
     }
 
 
     /**
      * 初始化toolbar
+     *
      * @param toolbar Toolbar
      */
     public void initToolbar(Toolbar toolbar) {
@@ -33,7 +35,7 @@ public abstract class ToolbarActivity extends BaseActivity {
         initTitleNeedBack();
     }
 
-    protected void initTitleNeedBack(){
+    protected void initTitleNeedBack() {
         // 设置左上角的返回按钮
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

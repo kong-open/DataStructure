@@ -1,10 +1,12 @@
 package xyz.kongzz.datastructure.common.widget.recycler;
 
-import android.support.annotation.LayoutRes;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -123,9 +125,10 @@ public abstract class RecyclerAdapter<Data>
 
     /**
      * 返回整个集合
+     *
      * @return List<Data>
      */
-    public List<Data> getItems(){
+    public List<Data> getItems() {
         return mDataList;
     }
 
@@ -180,8 +183,9 @@ public abstract class RecyclerAdapter<Data>
      */
     public void replace(Collection<Data> dataList) {
         mDataList.clear();
-        if (dataList == null || dataList.size() == 0)
+        if (dataList == null || dataList.size() == 0) {
             return;
+        }
         mDataList.addAll(dataList);
         notifyDataSetChanged();
     }

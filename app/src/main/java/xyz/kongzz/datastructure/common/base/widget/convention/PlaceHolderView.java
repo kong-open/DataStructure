@@ -1,6 +1,7 @@
 package xyz.kongzz.datastructure.common.base.widget.convention;
 
-import android.support.annotation.StringRes;
+
+import androidx.annotation.StringRes;
 
 /**
  * 作者:Kong
