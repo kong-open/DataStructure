@@ -58,8 +58,9 @@ public class MainActivity extends BaseActivity
                 return setCurrentTab(1);
             case R.id.navigation_mine:
                 return setCurrentTab(2);
+            default:
+                return setCurrentTab(0);
         }
-        return false;
     }
 
     @Override
@@ -79,7 +80,8 @@ public class MainActivity extends BaseActivity
             case 2:
                 mNavigation.setSelectedItemId(R.id.navigation_mine);
                 break;
-
+            default:
+                break;
         }
     }
 
@@ -100,7 +102,8 @@ public class MainActivity extends BaseActivity
             case 2:
                 mTitle.setText(R.string.title_mine);
                 return true;
+            default:
+                return false;
         }
-        return false;
     }
 }
