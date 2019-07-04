@@ -1,10 +1,11 @@
 package xyz.kongzz.datastructure.common.view.activity.sort;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.anzewei.parallaxbacklayout.ParallaxBack;
 

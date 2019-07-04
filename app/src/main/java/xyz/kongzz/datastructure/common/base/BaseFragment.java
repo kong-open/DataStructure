@@ -2,11 +2,13 @@ package xyz.kongzz.datastructure.common.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -18,7 +20,7 @@ import xyz.kongzz.datastructure.common.base.widget.convention.PlaceHolderView;
  * 描述:这是 BaseFragment
  */
 
-public abstract class BaseFragment extends android.support.v4.app.Fragment {
+public abstract class BaseFragment extends Fragment {
     protected View mRoot;
     protected Unbinder mRootUnBinder;
     protected PlaceHolderView mPlaceHolderView;

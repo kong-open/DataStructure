@@ -3,9 +3,10 @@ package xyz.kongzz.datastructure.common.base;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化控件之前调用
      */
-    protected void initBefore(){
+    protected void initBefore() {
 
     }
 
@@ -86,7 +87,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onSupportNavigateUp() {
         // 当点击界面导航返回时，Finish当前界面
@@ -100,7 +100,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         @SuppressLint("RestrictedApi")
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
         // 判断是否为空
-        if (fragments != null && fragments.size() > 0) {
+        if (fragments.size() > 0) {
             for (Fragment fragment : fragments) {
                 // 判断是否为我们能够处理的Fragment类型
                 if (fragment instanceof xyz.kongzz.datastructure.common.base.BaseFragment) {
@@ -119,9 +119,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 设置占位布局
+     *
      * @param placeHolderView 继承了占位布局的VIew
-     * */
-    public void setPlaceHolderView(PlaceHolderView placeHolderView){
+     */
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
         this.mPlaceHolderView = placeHolderView;
     }
 

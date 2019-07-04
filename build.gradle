@@ -1,4 +1,3 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
 
@@ -8,9 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'
     }
 }
 
@@ -36,8 +33,8 @@ ext {
 
     // Sdk and tools
     minSdkVersion = 21
-    targetSdkVersion = 27
-    compileSdkVersion = 27
+    targetSdkVersion = 28
+    compileSdkVersion = 28
 
     // App dependencies
     supportLibraryVersion = '27.1.1'
@@ -59,14 +56,14 @@ ext {
     dragger2Version = '2.16'
 
     // butterknife 依赖注解
-    butterknifeVersion = '8.8.1'
+    butterknifeVersion = '10.1.0'
 
     // 侧滑返回
     parallaxbacklayoutVersion = '1.1.9'
     geniusVersion = '2.1.0'
 
     // GSON
-    gsonVersion = '2.8.4'
+    gsonVersion = '2.8.5'
 
     // 粒子破碎动画
     particlesmasherVersion = '1.0.1'
@@ -76,4 +73,16 @@ ext {
 
     // RecycleAdapter
     adapterHelperVersion = '2.9.40'
+
+    //support-v7
+    appcompat = '1.1.0-beta01'
+    //support-v4
+    legacy_support_v4='1.0.0'
+    //support:design
+    material='1.1.0-alpha07'
+    constraintlayout='1.1.3'
+    recyclerview='1.1.0-alpha06'
+    annotation='1.0.0'
+    runner='1.2.0'
+    espresso_core='3.2.0'
 }
